@@ -1,0 +1,23 @@
+{
+    "foodstamps": [
+        {"name": "Fish", "category": "meat"},
+        {"name": "Egg", "category": "meat"},
+        {"name": "Chicken", "category": "meat"},
+        {"name": "Milk", "category": "diary"},
+        {"name": "Cream", "category": "diary"},
+        {"name": "Cheese", "category": "diary"},
+        {"name": "Pudding", "category": "sweets"},
+        {"name": "Ice-cream", "category": "sweets"},
+        {"name": "Chocolate", "category": "sweets"},
+        {"name": "Orange", "category": "fruits"},
+        {"name": "Berries", "category": "fruits"},
+        {"name": "Apple", "category": "fruits"},
+        {"name": "Carrot", "category": "vegetables"},
+        {"name": "Tomato", "category": "vegetables"},
+        {"name": "Eggplant", "category": "vegetables"},
+        {"name": "Rice", "category": "grains"},
+        {"name": "Bread", "category": "grains"},
+        {"name": "Kasha", "category": "grains"}
+        
+      ]
+}

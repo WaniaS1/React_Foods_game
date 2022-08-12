@@ -1,0 +1,220 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;500;600;700&display=swap');
+.App{
+  --stampWidth: 70px;
+  --boardWidth: 412px;
+  --buttonLeft: 7vw;
+  --pRight: 12vw;
+  --fullCircle: 360deg;
+  margin: 0 auto;
+  width: var(--boardWidth);
+  text-align: center;
+  font-family: 'Josefin Sans', sans-serif;
+}
+.useStamps{
+  position: relative;
+}
+.gridContainer{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-content: center;
+  gap: calc(var(--stampWidth)/3.5);
+  row-gap: 5px;
+
+}
+/* ----------------------------------------- Cards Styles --------------------*/
+.gridContainer.cardBacks{
+  position: absolute;
+  column-gap: 24px;
+  left: 2px;
+  top: 0;
+}
+.gridContainer > div{
+  justify-self: center;
+  width: var(--stampWidth);
+  height: 33px;
+  padding: 5px;
+  border: 2px solid black;
+  border-radius: 5px;
+  line-height: 33px;
+  box-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+}
+.gridContainer.cardBacks > div {
+  background-color: antiquewhite;
+  cursor: pointer;
+  transition: transform 0.15s;
+}
+.gridContainer.cardBacks > div:hover{
+  transform: scale(1.1);
+}
+.gridContainer.cardBacks img {
+  width: 90%;
+}
+.gridContainer.cardBacks > div.stampVisible{
+  transform: rotateY(90deg);
+  transition: all 0.3s;
+}
+.foodMatched{
+  transform: rotateY(90deg);
+}
+/* ----------------------------------------- Fortune Wheel Styles --------------------*/
+.fortuneWheel {
+  position: relative;
+  margin-top: 12px;
+}
+.fortuneWheel img.spinWheel{
+  width: 40%;
+  transform: rotateZ(0);
+  transition: all 2s;
+}
+.fortuneWheel img.yellow{
+  transform: rotateZ(calc(var(--fullCircle) + 0deg));
+  transition: all 2s;
+}
+.fortuneWheel img.green{
+  transform: rotateZ(calc(var(--fullCircle) + 60deg));
+  transition: all 2s;
+}
+.fortuneWheel img.blue{
+  transform: rotateZ(calc(var(--fullCircle) + 120deg));
+  transition: all 2s;
+}
+.fortuneWheel img.purple{
+  transform: rotateZ(calc(var(--fullCircle) + 180deg));
+  transition: all 2s;
+}
+.fortuneWheel img.red{
+  transform: rotateZ(calc(var(--fullCircle) + 240deg));
+  transition: all 2s;
+}
+.fortuneWheel img.orange{
+  transform: rotateZ(calc(var(--fullCircle) + 300deg));
+  transition: all 2s;
+}
+.fortuneWheel > button, .victoryAnim > button{
+  display: block;
+  text-align: center;
+  font-family: 'Josefin Sans', sans-serif;
+  margin: 40px auto 10px auto;
+  border: 2px solid black;
+  border-radius: 5px;
+  padding: 8px;
+  background-color: rgb(255, 235, 205);
+  box-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  transition: all 0.1s;
+}
+.fortuneWheel > button{
+  position: absolute;
+  left: var(--buttonLeft);
+  z-index: 1;
+}
+.fortuneWheel > button:hover, .victoryAnim > button:hover{
+  background-color: rgb(255, 245, 215);
+  cursor: pointer;
+  transform: scale(1.1);
+}
+.fortuneWheel > p{
+  margin: 0;
+  position: absolute;
+  right: var(--pRight);
+  top: -5vh;
+  font-size: large;
+}
+.fortuneWheel > p.turns{
+  top:-2.5vh;
+  margin: 0;
+}
+#spinWheelMessage{
+  color: red;
+  opacity: 1;
+  position: static;
+  transition: all 1s;
+}
+#spinWheelMessageBeforeMountingDom{
+  color: black;
+  opacity: 0;
+}
+.victory, .victoryAnim{
+  position: fixed;
+  width: var(--boardWidth);
+  padding: 20vh 0;
+  top: 20vh;
+  background-color: rgba(250, 235, 215,0.9);
+  box-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+  border: 2px solid black;
+  border-radius: 5px;
+  opacity: 0.2;
+  transform: rotateY(90deg);
+  z-index: 2;
+}
+.victoryAnim{
+  animation: modal 1s forwards;
+}
+/* ----------------------------------------------- board ----------------- */
+.board > div:nth-of-type(5){
+  grid-column: 2/3;
+}
+.board > div:nth-of-type(6){
+  grid-column: 3/4;
+}
+.boardFilled{
+  background-color: rgba(0, 128, 0,0.6);
+}
+.justDeleted{
+  position: absolute;
+  left: -60vw;
+}
+.justAdded{
+  position: absolute;
+  width: 200px;
+  left: 120vw;
+  top: 35vh;
+  transition: all 2s cubic-bezier(.27,1.01,.61,.1);
+  text-shadow: -7px 5px 7px rgba(66, 68, 90, 1);
+  overflow: hidden;
+}
+/* ----------------------------------------------- mediaQueries ----------------- */
+@media screen and (min-width: 520px) {
+  .fortuneWheel > button{
+    left: calc(var(--buttonLeft) - 5vw);
+  }
+  .fortuneWheel > p{
+    right: var(--pRight);/*calc(var(--pRight) -2vw);*/
+  }
+}
+@media screen and (min-width: 720px) {
+  .fortuneWheel > button{
+    left: calc(var(--buttonLeft) - 10vw);
+  }
+  .fortuneWheel > p{
+    right: calc(var(--pRight) - 5vw);
+  }
+}
+@media screen and (min-width: 960px) {
+  .fortuneWheel > p{
+    right: calc(var(--pRight) - 8vw);
+  }
+}
+/* ----------------------------------------------- Animations ----------------- */
+@keyframes goRound {
+  0%{
+    transform: rotateZ(0deg);
+    background-color: white;
+  }
+  50%{
+    transform: rotateZ(560deg);
+  }
+  100%{
+    transform: rotateZ(var(--rotation));
+  }
+}
+@keyframes modal {
+  0%{
+    
+  }
+  100%{
+    opacity: 1;
+    transform: rotateY(0);
+  }
+}
+
+
